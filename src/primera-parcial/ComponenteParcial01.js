@@ -2,24 +2,38 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const Componente01 = () => {
-  const [inputText, setInputText] = useState('');
+const ComponenteParcial01 = () => {
+  const [nombre, setNombre] = useState('');
+  const [semestre, setSemestre] = useState('');
   const navigation = useNavigation();
 
   const items = [
-    { id: '1', title: 'Props02', screen: 'Props02' },
-    { id: '2', title: 'Axios03', screen: 'Axios03' },
-    { id: '3', title: 'AsyncStorage04', screen: 'AsyncStorage04' },
+    { id: '1', title: 'PropsParcial02', screen: 'PropsParcial02' },
+    { id: '2', title: 'AxiosParcial03', screen: 'AxiosParcial03' },
+    { id: '3', title: 'AsyncStorageParcial04', screen: 'AsyncStorageParcial04' },
   ];
+
+  // Solo permite números en el campo de texto
+  const handleSemestreInput = (text) => {
+    const numericText = text.replace(/[^0-9]/g, ''); // Remueve todo excepto números
+    setSemestre(numericText);
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pantalla Principal</Text>
+      <Text style={styles.title}>Examen Primera Parcial</Text>
       <TextInput
-        placeholder="Ingresa un texto"
-        value={inputText}
-        onChangeText={setInputText}
+        placeholder="Ingresar nombre completo"
+        value={nombre}
+        onChangeText={setNombre}
         style={styles.input}
+      />
+      <TextInput
+        placeholder="Ingresar semestre"
+        value={semestre}
+        onChangeText={handleSemestreInput}
+        style={styles.input}
+        keyboardType="numeric"
       />
       <FlatList
         data={items}
@@ -27,7 +41,7 @@ const Componente01 = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.itemButton}
-            onPress={() => navigation.navigate(item.screen, { nombre: inputText, estado: false })}
+            onPress={() => navigation.navigate(item.screen, { nombre: nombre, semestre: semestre })}
           >
             <Text style={styles.itemText}>{item.title}</Text>
           </TouchableOpacity>
@@ -48,7 +62,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#5e4b44', // Marrón oscuro
+    color: '#5e4b44', // Marrón oscuro pastel
   },
   input: {
     borderWidth: 1,
@@ -65,7 +79,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 15,
     alignItems: 'center',
-    backgroundColor: '#b29e95', // Marrón oscuro pastel para un estilo minimalista
+    backgroundColor: '#b29e95', // Marrón oscuro pastel
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
@@ -73,10 +87,10 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   itemText: {
-    color: '#fff', // Texto blanco para contraste
+    color: '#fff',
     fontSize: 18,
     fontWeight: '600',
   },
 });
 
-export default Componente01;
+export default ComponenteParcial01;

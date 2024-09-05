@@ -26,10 +26,10 @@ const Componente01 = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={styles.itemButton}
             onPress={() => navigation.navigate(item.screen, { nombre: inputText, estado: false })}
+            style={styles.button} // Aplicar estilo de botón
           >
-            <Text style={styles.itemText}>{item.title}</Text>
+            <Text style={styles.buttonText}>{item.title}</Text>
           </TouchableOpacity>
         )}
       />
@@ -40,42 +40,27 @@ const Componente01 = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#f7f0e6', // Fondo pastel suave
     flex: 1,
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-    color: '#5e4b44', // Marrón oscuro
+    marginBottom: 10,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#d3c1b4',
-    borderRadius: 5,
+    marginBottom: 10,
+    padding: 5,
+  },
+  button: {
     padding: 10,
-    marginBottom: 20,
-    backgroundColor: '#fff',
-    color: '#333',
+    marginBottom: 5,
+    backgroundColor: '#007BFF', // Azul
+    borderRadius: 5,
   },
-  itemButton: {
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    marginBottom: 15,
-    alignItems: 'center',
-    backgroundColor: '#b29e95', // Marrón oscuro pastel para un estilo minimalista
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  itemText: {
+  buttonText: {
     color: '#fff', // Texto blanco para contraste
-    fontSize: 18,
-    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
