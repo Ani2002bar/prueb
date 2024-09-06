@@ -13,7 +13,7 @@ const ComponenteParcial01 = () => {
     { id: '3', title: 'AsyncStorageParcial04', screen: 'AsyncStorageParcial04' },
   ];
 
-  // Solo permite números en el campo de texto
+  // Solo permite números en el campo de texto//l
   const handleSemestreInput = (text) => {
     const numericText = text.replace(/[^0-9]/g, ''); // Remueve todo excepto números
     setSemestre(numericText);
